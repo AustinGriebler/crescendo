@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import {
     useGetRecipesQuery,
   } from '../app/services/recipes';
-import { Grid, Button, Container } from '@material-ui/core';
+import { Grid, Button, Container, CircularProgress } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -54,11 +54,11 @@ const RecipeList = () => {
     const { push } = useHistory();
   
     if (isLoading) {
-      return <div>Loading</div>;
+      return <Container><CircularProgress /></Container>;
     }
   
     if (!recipes) {
-      return <div>No recipes :(</div>;
+      return <Container>No recipes found :(</Container>;
     }
   
     return (
